@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { PDFViewer, StyleSheet } from '@react-pdf/renderer';
+import PDFPreview from './Components/PDFPreview';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+// Create styles
+const styles = StyleSheet.create({
+  pdfViewer: {
+    backgroundColor: "white important!"
+  }
+});
+const App = () => (
+  <div className = "home-container">
+    <div className = "nav">
+        <h2>Toolbar</h2>
+        <label className='newline-label'>Products per page</label>
+        <select value={2}>
+            <option>2</option>
+            <option>4</option>
+            <option>6</option>
+        </select>
+
+        <label>Add Products</label>
+        <input type="button" value={"+"}/>
     </div>
-  );
-}
+    <PDFViewer style={styles.pdfViewer} width={"100%"} showToolbar={true}>
+      <PDFPreview />
+    </PDFViewer>
+  </div>
+  
+);
 
 export default App;
